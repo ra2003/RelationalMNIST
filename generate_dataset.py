@@ -488,13 +488,15 @@ elif parsing.invariants == "off":
 elif parsing.invariants == "on":
 	INVARIANTS = [True]
 
+TASKS = parsing.tasks
+
 print("base:", parsing.base)
 print("save_dir:", parsing.save_dir, "--", DATA_DIR)
 print("invariants:", parsing.invariants, "--", INVARIANTS)
 print("sameness:", parsing.sameness, "--", SAMENESS)
-print("tasks:", parsing.tasks)
+print("tasks:", TASKS)
 
-'''
+
 
 np.random.seed(123)
 
@@ -506,7 +508,7 @@ else:
 
 task_functions = [generate_task_1, generate_task_2, generate_task_3, generate_task_4]
 
-for sameness, invariants, task_num in itertools.product(SAMENESS, INVARIANTS, [1, 2, 3, 4]):
+for sameness, invariants, task_num in itertools.product(SAMENESS, INVARIANTS, TASKS):
 
 	task_directory = "{}/RMNIST-{}{}".format(DATA_DIR.rstrip("/"), sameness[0].upper(), "I" if invariants else "")
 
@@ -534,5 +536,3 @@ for sameness, invariants, task_num in itertools.product(SAMENESS, INVARIANTS, [1
 	t_end = time.time()
 
 	print("\tDone. Took {:.2f} seconds\n".format(t_end - t_start))
-
-'''
