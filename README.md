@@ -1,8 +1,43 @@
 # RelationalMNIST
 
+## Requirements
+- Python 3
+- Numpy
+- Keras (for access to MNIST and fashion MNIST data as well as image augmentation functionality)
+
+
 ## How to generate the dataset:
-1. set the directory for the data to go (DATA_DIR)
-2. `python3 make_relational_mnist.py`
+~~~
+usage: generate_dataset.py [-h] [--base {mnist,fashion}] [--save_dir SAVE_DIR]
+                           [--sameness {sample,class,both}]
+                           [--invariants {off,on,both}]
+                           [--tasks [{1,2,3,4} [{1,2,3,4} ...]]] [--fast]
+
+Generate variations of the RelationalMNIST tasks. For more information, see
+https://github.com/tannerbohn/RelationalMNIST.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --base {mnist,fashion}
+                        Choose what base dataset to construct the relational
+                        dataset with. Either digits (MNIST) or fashion images.
+  --save_dir SAVE_DIR   Specify the root folder to save the task data in.
+  --sameness {sample,class,both}
+                        Choose how sameness is defined for the tasks. If
+                        'sample', two figures are the same only if they are
+                        the same sample from the same digits or fashion class.
+                        If 'class', two figures are the same if the are at
+                        least from the same class.
+  --invariants {off,on,both}
+                        Choose whether rotation and scaling invariants are
+                        added to the tasks. If 'both', multiple versions of
+                        the tasks will be generated.
+  --tasks [{1,2,3,4} [{1,2,3,4} ...]]
+                        Choose what subset of the tasks to generate.
+  --fast                Only a small number of training and test samples will
+                        be generated if this argument is enabled. Use to make
+                        sure things are working.
+~~~
 
 ## The dataset consists of four tasks:
 
